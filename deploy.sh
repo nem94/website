@@ -11,4 +11,4 @@ git init
 git add -A
 git commit -m 'deploy'
 git push -f git@github.com:nem94/website.git master:gh-pages
-cd -
+cd -f
