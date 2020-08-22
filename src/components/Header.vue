@@ -1,13 +1,13 @@
 <template>
   <header>
-    <div class="header-info d-flex">
+    <div class="header-info">
       <b-img src="@/assets/logo.png"></b-img>
-      <div class="d-flex info-list">
+      <div class="info-list">
         <div class="item">
           <b-icon-telephone></b-icon-telephone>
           <div class="ml-2">
             <span class="d-block text-uppercase">Telefon</span>
-            <span>0757 256 880</span>
+            <span>0757 000 000</span>
           </div>
         </div>
         <div class="item">
@@ -49,8 +49,9 @@ export default {};
 <style lang="scss" scoped>
 .header-info {
   background-color: $primary;
-  border-bottom: 2px solid $dark-grey;
+  border-bottom: 1px solid $dark-grey;
   padding: 1rem 1.5rem;
+  display: flex;
   img {
     max-width: 100%;
     height: 90px;
@@ -64,12 +65,19 @@ export default {};
       display: flex;
       padding-right: 3rem;
       padding-left: 3rem;
-      border-right: 2px solid $dark-grey;
+      border-right: 1px solid $light-grey;
       font-size: 15px;
+      &:last-child {
+        border-right: 0;
+      }
+      .text-uppercase {
+        color: $light-grey;
+      }
     }
   }
   .b-icon {
     font-size: 25px;
+    color: $light;
   }
 }
 .navbar {
@@ -99,6 +107,16 @@ export default {};
           border-bottom: 3px solid $secondary;
         }
       }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .header-info {
+    border: none;
+    justify-content: center;
+    .info-list {
+      display: none;
     }
   }
 }
