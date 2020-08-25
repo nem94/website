@@ -5,6 +5,9 @@ import './styles/style.scss';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import VueMasonryComponent from 'vue-masonry-component';
+
+Vue.use(VueMasonryComponent);
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

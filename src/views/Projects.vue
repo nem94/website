@@ -1,5 +1,16 @@
 <template>
-  <div class="about">
-    <h1>This is an projects page</h1>
+  <div>
+    <PhotoGallery />
   </div>
 </template>
+
+<script>
+import PhotoGallery from '@/components/gallery/PhotoGallery.vue';
+export default {
+  components: {
+    PhotoGallery,
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>
