@@ -7,40 +7,140 @@
       animation="slide-left"
       position="center"
     />
-    <b-container class="d-flex justify-content-center">
-      <b-card title="Card Title">
-        <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text>
-      </b-card>
-      <b-card title="Card Title">
-        <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text>
-      </b-card>
+    <b-container class="wrapper">
+      <b-row
+        data-aos="zoom-in-up"
+        data-aos-delay="20"
+        data-aos-duration="800"
+        data-aos-easing="ease-in-out"
+      >
+        <b-col cols="12" class="text-center description">
+          <h3>Specialisti in domeniul constructiilor</h3>
+          <p class="mb-0">
+            Oferim solutii eficiente perfect adaptate cerintelor dumneavoastră,
+            promptitudinea si seriozitatea fiind principile de baza in onorarea
+            proiectelor.
+            <br />Suntem o echipa de profesionisti in stransa
+            colaborare cu arhitecți, instalatori și urbaniști pentru realizarea
+            proiectelor de calitate.
+          </p>
+        </b-col>
+      </b-row>
+      <b-row>
+        <Card
+          title="Constructii civile"
+          description="bla bla bla"
+          img="civil_banner"
+          icon="house"
+          :delay="200"
+          animation="zoom-in-right"
+          to="/services/civil"
+        />
+        <Card
+          title="Constructii industriale"
+          description="bla bla bla"
+          img="industrial_banner"
+          icon="building"
+          :delay="200"
+          animation="zoom-in-up"
+          to="/services/industrial"
+        />
+        <Card
+          title="Certificate"
+          description="bla bla bla"
+          img="signature"
+          icon="award"
+          :delay="200"
+          animation="zoom-in-left"
+          to="/certifications"
+        />
+      </b-row>
     </b-container>
-
-    <b-link to="/services/industrial">industrial</b-link>
-    <b-link to="/services/civil">civil</b-link>
   </div>
 </template>
 
 <script>
-import Banner from '@/components/Banner.vue';
+import Banner from "@/components/Banner.vue";
+import Card from "@/components/Card.vue";
 export default {
   components: {
     Banner,
-  },
+    Card
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.card {
-  max-width: 30%;
-  border-radius: 0;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  border: 0;
+.description {
+  padding: 3rem 0;
+  h3 {
+    color: $dark-grey;
+  }
+
+  p {
+    color: $light-grey;
+  }
+}
+
+.wrapper {
+  padding-bottom: 3rem;
+}
+
+.item {
+  text-align: center;
+  width: 33.33%;
+
+  position: relative;
+  &:hover {
+    .body {
+      transform: translateY(0) scaleY(1);
+    }
+  }
+  .body {
+    position: relative;
+    transform: translateY(56px);
+    z-index: 1;
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transition: all cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
+    background-size: cover;
+    min-height: 275px;
+    background-position: center;
+
+    .content {
+      padding: 2rem 2rem;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: $white;
+
+      .b-icon {
+        color: $secondary;
+        font-size: 3.5rem;
+      }
+
+      h2 {
+        text-transform: uppercase;
+      }
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $primary;
+      opacity: 0.75;
+    }
+  }
+  .link {
+    padding: 1rem;
+    background-color: $secondary;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $white;
+  }
 }
 </style>

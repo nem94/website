@@ -12,34 +12,33 @@
 </template>
 
 <script>
-import FullSlider from '@/components/gallery/FullSlider.vue';
-import Slider from '@/components/gallery/Slider.vue';
-import Masonry from '@/components/gallery/Masonry.vue';
-import masonry from '@/services/masonry';
+import FullSlider from "@/components/gallery/FullSlider.vue";
+import Slider from "@/components/gallery/Slider.vue";
+import Masonry from "@/components/gallery/Masonry.vue";
+import masonry from "@/services/masonry";
 export default {
   data() {
     return {
       images: null,
       showSlider: false,
       windowWidth: 0,
-      isSmallScreen: false,
+      isSmallScreen: false
     };
   },
   components: {
     FullSlider,
     Slider,
-    Masonry,
+    Masonry
   },
   computed: {
     mobileImgs() {
       return masonry.images;
-    },
+    }
   },
   methods: {
     showCarousel(data) {
       this.images = data;
       this.showSlider = true;
-      document.getElementById('body').classList.add('overflow-hidden');
     },
     toggleCarousel(value) {
       this.showSlider = value;
@@ -49,15 +48,15 @@ export default {
       this.windowWidth < 768
         ? (this.isSmallScreen = true)
         : (this.isSmallScreen = false);
-    },
+    }
   },
   created() {
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener("resize", this.handleResize);
     this.handleResize();
   },
   destroyed() {
-    window.removeEventListener('resize', this.handleResize);
-  },
+    window.removeEventListener("resize", this.handleResize);
+  }
 };
 </script>
 

@@ -1,4 +1,4 @@
-const limit = 10;
+const limit = 9;
 
 const masonry = {
   images: [],
