@@ -1,5 +1,6 @@
 <template>
-  <b-container fluid class="carousel-wrapper" v-show="images">
+  <b-container fluid class="carousel-wrapper" v-show="showSlider">
+    <b-icon-x @click="closeCarousel"></b-icon-x>
     <b-carousel
       id="carousel-fade"
       style="text-shadow: 0px 0px 2px #000"
@@ -9,7 +10,7 @@
       img-height="480"
     >
       <b-carousel-slide
-        caption="First slide"
+        :caption="img.info"
         :img-src="img.src"
         v-for="(img, index) in images"
         :key="index"
@@ -24,6 +25,15 @@ export default {
     images: {
       type: Array,
     },
+    showSlider: {
+      type: Boolean,
+    },
+  },
+  methods: {
+    closeCarousel() {
+      document.getElementById('body').classList.remove('overflow-hidden');
+      this.$emit('toggleCarousel', false);
+    },
   },
 };
 </script>
@@ -36,8 +46,17 @@ export default {
   left: 0;
   right: 0;
   z-index: 9;
-  padding: 3rem;
+  padding: 2rem;
   background-color: rgba(0, 0, 0, 0.75);
   overflow: auto;
+
+  .b-icon {
+    position: absolute;
+    font-size: 30px;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+    cursor: pointer;
+  }
 }
 </style>

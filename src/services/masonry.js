@@ -1,5 +1,7 @@
+const limit = 10;
+
 const masonry = {
-  masonryImages: [],
+  images: [],
   generateNames: function(limit) {
     for (let i = 1; i <= limit; i++) {
       const img = {
@@ -8,10 +10,10 @@ const masonry = {
       };
       img.src = require(`@/assets/masonry/masonry_${i}.jpg`);
       img.id = i;
-      this.masonryImages.push(img);
+      this.images.push(img);
     }
   },
 };
 
-masonry.generateNames(5);
+masonry.generateNames(limit);
 export default masonry;

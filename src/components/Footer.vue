@@ -1,6 +1,7 @@
 <template>
-  <b-container fluid class="bg-primary">
-    <!-- <b-container>
+  <footer class="bg-primary">
+    <b-container fluid>
+      <!-- <b-container>
       <b-row>
         <b-col>
           <h5>Contact</h5>
@@ -13,7 +14,8 @@
         </b-col>
       </b-row>
     </b-container>-->
-  </b-container>
+    </b-container>
+  </footer>
 </template>
 
 <script>
@@ -21,4 +23,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+footer {
+  min-height: 100px;
+}
 </style>

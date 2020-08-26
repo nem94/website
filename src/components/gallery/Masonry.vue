@@ -1,12 +1,13 @@
 <template>
-  <b-container fluid class="projects">
-    <b-container class="pt-4">
+  <b-container fluid>
+    <b-container>
       <masonry
         :item-selector="itemSelector"
         :column-width="columnWidth"
         @layoutComplete="onLayoutComplete"
         :transition-duration="0.5"
         :stagger="15"
+        :gutter="5"
       >
         <div class="grid-item" v-for="(item, index) in imgArr" :key="index">
           <b-img
@@ -14,9 +15,6 @@
             :src="item.src"
             @click="emitClickEvent(item)"
           ></b-img>
-          <div class="id">
-            {{ item.id }}
-          </div>
         </div>
       </masonry>
     </b-container>
@@ -28,13 +26,14 @@ import masonry from '@/services/masonry';
 export default {
   computed: {
     imgArr() {
-      return masonry.masonryImages;
+      return masonry.images;
     },
   },
   data() {
     return {
       itemSelector: '.grid-item',
       columnWidth: 350,
+      msnry: null,
     };
   },
   methods: {
@@ -52,20 +51,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.id {
-  position: absolute;
-  color: red;
-  font-size: 25px;
-  font-weight: 700;
-  z-index: 9;
-  top: 20px;
-}
-.projects {
-  background-color: $dark-grey;
-}
 .grid-item {
   width: 350px;
   position: relative;
+  padding-bottom: 5px;
   &:nth-child(even) {
     animation-delay: 0.75s;
   }
