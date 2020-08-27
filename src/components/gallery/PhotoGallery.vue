@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid class="projects pt-4">
+  <b-container fluid class="projects py-4">
     <FullSlider
       :images="images"
       @toggleCarousel="toggleCarousel"

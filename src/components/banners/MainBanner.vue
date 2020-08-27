@@ -11,9 +11,7 @@
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
         >
-          <h1 class="title" v-if="title">
-            {{ title }}
-          </h1>
+          <h1 class="title" v-if="title">{{ title }}</h1>
         </b-col>
       </div>
     </b-row>
@@ -24,22 +22,22 @@
 export default {
   props: {
     title: {
-      type: String,
+      type: String
     },
     imgName: {
-      type: String,
+      type: String
     },
     position: {
-      type: String,
+      type: String
     },
     size: {
       type: Number,
-      default: 450,
+      default: 450
     },
     animation: {
       type: String,
-      default: 'fade-up-left',
-    },
+      default: "fade-up-left"
+    }
   },
   computed: {
     url() {
@@ -49,10 +47,10 @@ export default {
       return {
         backgroundImage: `url(${this.url})`,
         backgroundPosition: this.position,
-        height: `${this.size}px`,
+        height: `${this.size}px`
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

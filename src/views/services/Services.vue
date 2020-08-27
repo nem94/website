@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Banner
+    <MainBanner
       img-name="services"
       :size="250"
-      title="Services"
+      title="Servicii"
       animation="slide-left"
       position="center"
     />
@@ -29,7 +29,7 @@
       <b-row>
         <Card
           title="Constructii civile"
-          description="bla bla bla"
+          description="Constructii ce cuprind cladiri de locuit, social-culturale, pentru educatie, satanate etc."
           img="civil_banner"
           icon="house"
           :delay="200"
@@ -38,7 +38,7 @@
         />
         <Card
           title="Constructii industriale"
-          description="bla bla bla"
+          description="Constructii de dimensiuni foarte mari in care se desfasoara activitati de producere sau de depozitare a unor bunuri."
           img="industrial_banner"
           icon="building"
           :delay="200"
@@ -47,12 +47,12 @@
         />
         <Card
           title="Certificate"
-          description="bla bla bla"
+          description="Certificate dobandite in decursul anilor"
           img="signature"
           icon="award"
           :delay="200"
           animation="zoom-in-left"
-          to="/certifications"
+          to="/services/certifications"
         />
       </b-row>
     </b-container>
@@ -60,11 +60,11 @@
 </template>
 
 <script>
-import Banner from "@/components/Banner.vue";
+import MainBanner from "@/components/banners/MainBanner.vue";
 import Card from "@/components/Card.vue";
 export default {
   components: {
-    Banner,
+    MainBanner,
     Card
   }
 };

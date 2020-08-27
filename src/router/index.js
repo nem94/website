@@ -31,13 +31,18 @@ const routes = [
   },
   {
     path: '/services/industrial',
-    name: 'industrial',
+    name: 'Industrial',
     component: () => import('../views/services/Industrial.vue'),
   },
   {
     path: '/services/civil',
-    name: 'civil',
+    name: 'Civil',
     component: () => import('../views/services/Civil.vue'),
+  },
+  {
+    path: '/services/certifications',
+    name: 'Certificate',
+    component: () => import('../views/services/Certificate.vue'),
   },
   {
     path: '/contact-us',

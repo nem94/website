@@ -5,8 +5,9 @@
     :data-aos-delay="delay"
     :data-aos-duration="duration"
     :data-aos-easing="timing"
+    :style="{width: `${width}%`}"
   >
-    <div class="body" :style="{backgroundImage: `url(${this.url}`}">
+    <div class="body" :style="options" :class="{ 'hover-effect': to }">
       <div class="overlay"></div>
       <div class="content d-flex flex-column align-items-center">
         <b-icon :icon="icon"></b-icon>
@@ -14,7 +15,7 @@
         <p>{{description}}</p>
       </div>
     </div>
-    <div class="link">
+    <div class="link" v-if="to">
       <b-link :to="to">{{link}}</b-link>
     </div>
   </div>
@@ -22,6 +23,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      options: {}
+    };
+  },
   props: {
     img: {
       type: String
@@ -56,12 +62,19 @@ export default {
     },
     to: {
       type: String
+    },
+    width: {
+      type: Number
     }
   },
   computed: {
     url() {
-      return require(`@/assets/${this.img}.jpg`);
+      if (this.img) return require(`@/assets/${this.img}.jpg`);
+      return null;
     }
+  },
+  created() {
+    if (this.url) this.options = { backgroundImage: `url(${this.url}` };
   }
 };
 </script>
@@ -69,24 +82,27 @@ export default {
 <style lang="scss" scoped>
 .item {
   text-align: center;
-  width: 33.33%;
 
   position: relative;
   &:hover {
     .body {
-      transform: translateY(0) scaleY(1);
+      &.hover-effect {
+        transform: translateY(0) scaleY(1);
+      }
     }
   }
   .body {
     position: relative;
-    transform: translateY(56px);
     z-index: 1;
-    transform-origin: top;
-    transform-style: preserve-3d;
-    transition: all cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
     background-size: cover;
     min-height: 275px;
     background-position: center;
+    &.hover-effect {
+      transform: translateY(56px);
+      transform-origin: top;
+      transform-style: preserve-3d;
+      transition: all cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
+    }
 
     .content {
       padding: 2rem 2rem;

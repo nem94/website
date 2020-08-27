@@ -33,7 +33,29 @@
         <b-navbar-nav>
           <b-nav-item to="/">Home</b-nav-item>
           <b-nav-item to="/about">About</b-nav-item>
-          <b-nav-item to="/services">Services</b-nav-item>
+          <b-nav-item
+            to="/services"
+            @mouseover="onOver"
+            @mouseleave="onLeave"
+            :activeClass="activeClass"
+          >
+            Services
+            <b-dropdown ref="dropdown" no-caret variant="primary" text="Drop-Right">
+              <b-dropdown-item
+                to="/services/civil"
+                v-on:click="setParentActive"
+                ref="civil"
+              >Constructii civile</b-dropdown-item>
+              <b-dropdown-item
+                to="/services/industrial"
+                v-on:click="setParentActive"
+              >Constructii industriale</b-dropdown-item>
+              <b-dropdown-item
+                to="/services/certifications"
+                v-on:click="setParentActive"
+              >Certificari</b-dropdown-item>
+            </b-dropdown>
+          </b-nav-item>
           <b-nav-item to="/projects">Projects</b-nav-item>
           <b-nav-item to="/contact-us">Contact</b-nav-item>
         </b-navbar-nav>
@@ -43,7 +65,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isClicked: false
+    };
+  },
+  computed: {
+    activeClass() {
+      return this.isClicked ? "router-link-exact-active" : "";
+    }
+  },
+  methods: {
+    onOver() {
+      this.$refs.dropdown.visible = true;
+    },
+    onLeave() {
+      this.$refs.dropdown.visible = false;
+    },
+    setParentActive() {
+      this.isClicked = true;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -88,6 +132,7 @@ export default {};
     margin-left: auto;
     margin-right: auto;
     .nav-item {
+      position: relative;
       .nav-link {
         color: $light;
         transition: all ease-in-out 0.5s;
@@ -96,9 +141,15 @@ export default {};
         font-weight: 500;
         font-size: 14px;
         padding: 1rem;
-        &.router-link-active {
+        &.router-link-exact-active {
           color: $secondary;
           border-bottom: 3px solid $secondary;
+        }
+
+        .dropdown {
+          position: absolute;
+          left: 0;
+          bottom: 2px;
         }
       }
       &:hover {
